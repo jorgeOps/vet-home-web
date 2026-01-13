@@ -2,123 +2,123 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { CheckCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
-export function About() {
-    const images = Array.from({ length: 10 }, (_, i) => `/carousel-${i + 1}.jpeg`);
-    const [currentIndex, setCurrentIndex] = useState(0);
+const defaultImages = ["/carousel-1.jpeg"]; // Fallback just in case
+
+interface AboutProps {
+    carouselImages?: string[];
+}
+
+export function About({ carouselImages = [] }: AboutProps) {
+    const { t } = useLanguage();
+    const images = carouselImages.length > 0 ? carouselImages : defaultImages;
+    const [currentImage, setCurrentImage] = useState(0);
 
     const nextImage = () => {
-        setCurrentIndex((prev) => (prev + 1) % images.length);
+        setCurrentImage((prev) => (prev + 1) % images.length);
     };
 
     const prevImage = () => {
-        setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+        setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
     };
 
     return (
-        <section id="about" className="py-24 bg-white overflow-hidden">
+        <section id="about" className="py-24 overflow-hidden">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    {/* Image Carousel */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true }}
+                        className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl group"
+                    >
+                        <motion.div
+                            key={currentImage}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5 }}
+                            className="absolute inset-0"
+                            drag="x"
+                            dragConstraints={{ left: 0, right: 0 }}
+                            dragElastic={0.2}
+                            onDragEnd={(e, { offset, velocity }) => {
+                                const swipe = offset.x; // Positive is right swipe, negative is left
+                                if (swipe < -50) {
+                                    nextImage();
+                                } else if (swipe > 50) {
+                                    prevImage();
+                                }
+                            }}
+                        >
+                            <Image
+                                src={images[currentImage]}
+                                alt="Veterinarian with dog"
+                                fill
+                                className="object-cover pointer-events-none select-none"
+                            />
+                        </motion.div>
 
-                    <div className="relative group">
-                        <div className="absolute -inset-4 bg-primary/20 rounded-3xl -rotate-2 blur-sm transition-all duration-500 group-hover:rotate-0 group-hover:bg-primary/30" />
+                        {/* Navigation Arrows - Always visible on mobile, hover on desktop */}
+                        <button
+                            onClick={prevImage}
+                            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white transition-all opacity-100 lg:opacity-0 lg:group-hover:opacity-100 z-10"
+                            aria-label="Previous image"
+                        >
+                            <ChevronLeft className="h-6 w-6 text-foreground" />
+                        </button>
+                        <button
+                            onClick={nextImage}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white transition-all opacity-100 lg:opacity-0 lg:group-hover:opacity-100 z-10"
+                            aria-label="Next image"
+                        >
+                            <ChevronRight className="h-6 w-6 text-foreground" />
+                        </button>
 
-                        {/* Carousel Container - Adjusted for Vertical Images (Aspect 3:4 or 9:16) */}
-                        <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-gray-100 cursor-grab active:cursor-grabbing">
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={currentIndex}
-                                    initial={{ opacity: 0, x: 20 }}
-                                    animate={{ opacity: 1, x: 0, scale: 1 }}
-                                    exit={{ opacity: 0, x: -20 }}
-                                    transition={{ duration: 0.3 }}
-                                    drag="x"
-                                    dragConstraints={{ left: 0, right: 0 }}
-                                    dragElastic={0.2}
-                                    onDragEnd={(e, { offset, velocity }) => {
-                                        const swipe = Math.abs(offset.x) * velocity.x;
-
-                                        if (swipe < -10000 || offset.x < -100) {
-                                            nextImage();
-                                        } else if (swipe > 10000 || offset.x > 100) {
-                                            prevImage();
-                                        }
-                                    }}
-                                    className="absolute inset-0"
-                                >
-                                    <Image
-                                        src={images[currentIndex]}
-                                        alt={`Foto ${currentIndex + 1} del carrusel`}
-                                        fill
-                                        className="object-cover pointer-events-none" // prevent image drag
-                                        priority={currentIndex === 0}
-                                    />
-                                </motion.div>
-                            </AnimatePresence>
-
-                            {/* Navigation Buttons */}
-                            <div className="absolute inset-0 flex items-center justify-between p-4 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        {/* Indicators */}
+                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                            {images.map((_, idx) => (
                                 <button
-                                    onClick={prevImage}
-                                    className="p-2 rounded-full bg-black/30 text-white hover:bg-black/50 backdrop-blur-sm transition-colors pointer-events-auto"
-                                >
-                                    <ChevronLeft size={24} />
-                                </button>
-                                <button
-                                    onClick={nextImage}
-                                    className="p-2 rounded-full bg-black/30 text-white hover:bg-black/50 backdrop-blur-sm transition-colors pointer-events-auto"
-                                >
-                                    <ChevronRight size={24} />
-                                </button>
-                            </div>
-
-                            {/* Indicators */}
-                            <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-                                {images.map((_, idx) => (
-                                    <div
-                                        key={idx}
-                                        className={`w-2 h-2 rounded-full shadow-sm transition-all ${idx === currentIndex ? "bg-white w-4" : "bg-white/50"}`}
-                                    />
-                                ))}
-                            </div>
+                                    key={idx}
+                                    onClick={() => setCurrentImage(idx)}
+                                    className={`w-2 h-2 rounded-full transition-all ${idx === currentImage ? "bg-white w-6" : "bg-white/50"
+                                        }`}
+                                />
+                            ))}
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="space-y-8">
+                    {/* Text Content */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true }}
+                        className="space-y-8"
+                    >
                         <div>
-                            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-                                Sobre Mí
-                            </h2>
-                            <div className="h-1 w-20 bg-primary rounded-full mb-6" />
+                            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-foreground mb-4">{t.about.title}</h2>
+                            <h3 className="text-xl font-medium text-primary mb-6">
+                                {t.about.greeting}
+                            </h3>
                             <p className="text-lg text-muted-foreground leading-relaxed">
-                                ¡Hola! Soy María (Nombre ficticio), veterinaria colegiada con más de 5 años de experiencia en clínica de pequeños animales.
-                            </p>
-                            <p className="text-lg text-muted-foreground leading-relaxed mt-4">
-                                Mi pasión es garantizar la salud y felicidad de tus mascotas. Entiendo que dejar a tu perro cuando te vas de viaje puede ser estresante, por eso ofrezco un hogar, no una jaula. En mi casa, tu perro es uno más de la familia.
+                                {t.about.description}
                             </p>
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            {[
-                                "Veterinaria Colegiada",
-                                "Atención 24h",
-                                "Sin Jaulas",
-                                "Experiencia en Urgencias",
-                                "Seguro de Responsabilidad",
-                                "Cariño Infinito"
-                            ].map((item) => (
-                                <div key={item} className="flex items-center gap-3">
-                                    <CheckCircle2 className="text-primary flex-shrink-0" size={20} />
-                                    <span className="font-medium text-foreground">{item}</span>
+                            {t.about.features.map((feature, index) => (
+                                <div key={index} className="flex items-center gap-3 bg-secondary/30 p-3 rounded-lg">
+                                    <CheckCircle className="text-primary flex-shrink-0" size={20} />
+                                    <span className="font-medium text-sm">{feature}</span>
                                 </div>
                             ))}
                         </div>
-
-
-                    </div>
-
+                    </motion.div>
                 </div>
             </div>
         </section>

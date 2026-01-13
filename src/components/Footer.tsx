@@ -1,11 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import { Stethoscope, Instagram, Facebook, Mail, Phone, MapPin } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function Footer() {
+    const { t } = useLanguage();
+
     return (
         <footer className="bg-muted/30 border-t pt-16 pb-8">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md://grid-cols-4 gap-12 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                     {/* Brand */}
                     <div className="space-y-4">
                         <div className="flex items-center space-x-2">
@@ -15,24 +20,24 @@ export function Footer() {
                             <span className="font-bold text-lg">VetHome</span>
                         </div>
                         <p className="text-muted-foreground text-sm leading-relaxed">
-                            Cuidado de mascotas familiar y cercano. Trato directo y sin intermediarios.
+                            {t.footer.brandTagline}
                         </p>
                     </div>
 
                     {/* Quick Links */}
                     <div>
-                        <h3 className="font-semibold mb-4">Secciones</h3>
+                        <h3 className="font-semibold mb-4">{t.footer.sectionsTitle}</h3>
                         <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li><Link href="/#home" className="hover:text-primary">Inicio</Link></li>
-                            <li><Link href="/#services" className="hover:text-primary">Servicios</Link></li>
-                            <li><Link href="/#about" className="hover:text-primary">Sobre Mí</Link></li>
-                            <li><Link href="/contact" className="hover:text-primary">Contacto</Link></li>
+                            <li><Link href="/#home" className="hover:text-primary">{t.nav.home}</Link></li>
+                            <li><Link href="/#services" className="hover:text-primary">{t.nav.services}</Link></li>
+                            <li><Link href="/#about" className="hover:text-primary">{t.nav.about}</Link></li>
+                            <li><Link href="/contact" className="hover:text-primary">{t.nav.contact}</Link></li>
                         </ul>
                     </div>
 
                     {/* Contact */}
                     <div>
-                        <h3 className="font-semibold mb-4">Contacto</h3>
+                        <h3 className="font-semibold mb-4">{t.footer.contactTitle}</h3>
                         <ul className="space-y-3 text-sm text-muted-foreground">
                             <li className="flex items-center space-x-2">
                                 <Phone size={16} className="text-primary" />
@@ -44,14 +49,14 @@ export function Footer() {
                             </li>
                             <li className="flex items-start space-x-2">
                                 <MapPin size={16} className="text-primary mt-0.5" />
-                                <span>San Luis de Sabinillas y alrededores</span>
+                                <span>{t.footer.address}</span>
                             </li>
                         </ul>
                     </div>
 
                     {/* Social */}
                     <div>
-                        <h3 className="font-semibold mb-4">Redes Sociales</h3>
+                        <h3 className="font-semibold mb-4">{t.footer.socialTitle}</h3>
                         <div className="flex space-x-4">
                             <a href="#" className="p-2 bg-background rounded-full hover:bg-primary hover:text-white transition-colors border shadow-sm">
                                 <Instagram size={20} />
@@ -64,7 +69,7 @@ export function Footer() {
                 </div>
 
                 <div className="border-t pt-8 text-center text-sm text-muted-foreground">
-                    <p>Hecho con ❤️ para cuidar de tus peludos.</p>
+                    <p>{t.footer.copyright}</p>
                 </div>
             </div>
         </footer>

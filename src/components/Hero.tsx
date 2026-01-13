@@ -5,8 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function Hero() {
+    const { t } = useLanguage();
+
     return (
         <section id="home" className="relative h-screen w-full overflow-hidden flex items-center justify-center">
             {/* Background with Overlay */}
@@ -30,14 +33,14 @@ export function Hero() {
                     className="space-y-6"
                 >
                     <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-                        Cuidado de Confianza,<br />
+                        {t.hero.title1}<br />
                         <span className="text-primary-foreground bg-primary/90 px-2 rounded-sm inline-block mt-2">
-                            Como en Casa
+                            {t.hero.title2}
                         </span>
                     </h1>
 
                     <p className="text-lg sm:text-xl md:text-2xl font-light text-gray-200 max-w-2xl mx-auto leading-relaxed">
-                        Soy veterinaria y cuido de tu perro en mi propio hogar. Sin jaulas, con cariño y la tranquilidad de dejarlo en manos expertas.
+                        {t.hero.subtitle}
                     </p>
 
                     <motion.div
@@ -48,12 +51,12 @@ export function Hero() {
                     >
                         <Link href="/contact" className="w-full sm:w-auto">
                             <Button size="lg" className="w-full sm:w-auto rounded-full text-lg h-12 px-8 bg-white text-primary hover:bg-gray-100 hover:text-primary transition-all shadow-lg hover:shadow-xl hover:scale-105">
-                                Reservar Cita
+                                {t.hero.book}
                             </Button>
                         </Link>
                         <Link href="#services" className="w-full sm:w-auto">
                             <Button size="lg" className="w-full sm:w-auto rounded-full text-lg h-12 px-8 bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary transition-all backdrop-blur-sm">
-                                Ver Servicios <ArrowRight className="ml-2 h-5 w-5" />
+                                {t.hero.services} <ArrowRight className="ml-2 h-5 w-5" />
                             </Button>
                         </Link>
                     </motion.div>
@@ -68,7 +71,7 @@ export function Hero() {
                 className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/70"
             >
                 <Link href="#services" className="flex flex-col items-center gap-2 cursor-pointer hover:text-white transition-colors group">
-                    <span className="text-sm font-medium tracking-widest uppercase">Descubre Más</span>
+                    <span className="text-sm font-medium tracking-widest uppercase">{t.hero.discover}</span>
                     <ArrowRight className="rotate-90 h-6 w-6 group-hover:translate-y-1 transition-transform" />
                 </Link>
             </motion.div>

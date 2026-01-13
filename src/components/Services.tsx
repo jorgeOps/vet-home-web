@@ -3,17 +3,22 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { services, iconMap } from "@/lib/data";
+import { iconMap } from "@/lib/data";
+import { servicesData } from "@/lib/translations";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function Services() {
+    const { t, language } = useLanguage();
+    const services = servicesData[language];
+
     return (
         <section id="services" className="py-24 bg-muted/20">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-foreground">Mis Servicios</h2>
+                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-foreground">{t.services.title}</h2>
                     <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Ofrezco una gama completa de cuidados para que tu mascota esté en las mejores manos.
+                        {t.services.subtitle}
                     </p>
                 </div>
 
@@ -43,13 +48,13 @@ export function Services() {
 
                                 {isFeatured && (
                                     <div className="absolute top-4 right-4 bg-primary text-[10px] font-bold px-2 py-1 rounded text-white uppercase tracking-wider">
-                                        Popular
+                                        {t.services.popular}
                                     </div>
                                 )}
 
                                 <Link href={`/services/${service.id}`} className="mt-auto">
                                     <Button variant={isFeatured ? "default" : "outline"} className="w-full justify-between group-hover:bg-primary group-hover:text-primary-foreground">
-                                        Ver Detalles
+                                        {t.services.details}
                                         <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
                                     </Button>
                                 </Link>

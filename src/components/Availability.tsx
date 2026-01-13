@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { availabilityData, defaultStatus, DayStatus } from "@/lib/availability-data";
+import { useLanguage } from "@/context/LanguageContext";
 
 const daysOfWeek = ["L", "M", "X", "J", "V", "S", "D"];
 const monthNames = [
@@ -14,6 +15,7 @@ const monthNames = [
 ];
 
 export function Availability() {
+    const { t } = useLanguage();
     const [currentDate, setCurrentDate] = useState(new Date());
     const [selectedDates, setSelectedDates] = useState<string[]>([]);
 
@@ -44,7 +46,7 @@ export function Availability() {
         const dateKey = getDateKey(day);
         const status = getDayStatus(day);
 
-        if (status === "full") return;
+        // if (status === "full") return; // Allow selection even if full to encourage contact
 
         setSelectedDates(prev =>
             prev.includes(dateKey)
@@ -56,6 +58,7 @@ export function Availability() {
     const generateWhatsAppLink = () => {
         if (selectedDates.length === 0) return "#";
         const datesStr = selectedDates.map(d => d.split("-").reverse().join("/")).join(", ");
+        // Simple localization for the message
         const message = `Hola, he visto tu web y estoy interesado/a en reservar hueco para los días: ${datesStr}.`;
         return `https://wa.me/34622588839?text=${encodeURIComponent(message)}`;
     };
@@ -65,32 +68,32 @@ export function Availability() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div className="space-y-6">
-                        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-foreground">Disponibilidad</h2>
+                        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-foreground">{t.availability.title}</h2>
                         <p className="text-muted-foreground text-lg leading-relaxed">
-                            Selecciona los días que te interesan. Recuerda que acepto un máximo de 2 perros simultáneamente para garantizar que estén bien atendidos.
+                            {t.availability.subtitle}
                         </p>
 
                         <div className="bg-secondary/30 border border-border/50 rounded-xl p-6 space-y-4">
                             <h3 className="font-semibold flex items-center gap-2">
                                 <CalendarIcon className="text-primary" size={20} />
-                                Leyenda
+                                {t.availability.legendTitle}
                             </h3>
                             <ul className="space-y-3 text-sm text-muted-foreground">
                                 <li className="flex items-center gap-2">
-                                    <div className="w-4 h-4 rounded bg-background border border-border shadow-sm flex items-center justify-center font-bold text-[10px] text-foreground">1</div>
-                                    <span><strong>Libre</strong> (2 plazas disponibles)</span>
+                                    <div className="w-4 h-4 rounded bg-background border border-border shadow-sm flex items-center justify-center font-bold text-[10px] text-foreground"></div>
+                                    <span><strong>{t.availability.legendFree}</strong></span>
                                 </li>
                                 <li className="flex items-center gap-2">
-                                    <div className="w-4 h-4 rounded bg-orange-100 border border-orange-200 text-orange-600 flex items-center justify-center font-bold text-[10px]">½</div>
-                                    <span><strong>Última Plaza</strong> (Queda 1 hueco)</span>
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <div className="w-4 h-4 rounded bg-primary text-primary-foreground flex items-center justify-center"><Check size={10} /></div>
-                                    <span>Tu selección</span>
+                                    <div className="w-4 h-4 rounded bg-orange-100 border border-orange-200 text-orange-600 flex items-center justify-center font-bold text-[10px]">!</div>
+                                    <span><strong>{t.availability.legendPartial}</strong></span>
                                 </li>
                                 <li className="flex items-center gap-2">
                                     <div className="w-4 h-4 rounded bg-muted text-muted-foreground/30 flex items-center justify-center text-[10px]">X</div>
-                                    <span><strong>Completo</strong> (Lo siento, estoy llena)</span>
+                                    <span><strong>{t.availability.legendFull}</strong></span>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <div className="w-4 h-4 rounded bg-primary text-primary-foreground flex items-center justify-center"><Check size={10} /></div>
+                                    <span>{t.availability.legendSelected}</span>
                                 </li>
                             </ul>
                         </div>
@@ -100,17 +103,17 @@ export function Availability() {
                                 <Link href={generateWhatsAppLink()} target="_blank">
                                     <Button size="lg" className="w-full sm:w-auto shadow-xl shadow-primary/20">
                                         <Send className="mr-2 h-4 w-4" />
-                                        Consultar disponibilidad
+                                        {t.availability.checkButton}
                                     </Button>
                                 </Link>
-                                <p className="text-xs text-muted-foreground mt-2">Te abrirá WhatsApp para hablar directamente conmigo.</p>
+                                <p className="text-xs text-muted-foreground mt-2">{t.availability.checkHint}</p>
                             </div>
                         )}
                     </div>
 
                     <div className="bg-card shadow-xl border rounded-3xl p-6 md:p-8 select-none">
                         <div className="flex items-center justify-between mb-8">
-                            <h3 className="font-bold text-xl capitalize">{monthNames[month]} {year}</h3>
+                            <h3 className="font-bold text-xl capitalize">{t.calendar.months[month]} {year}</h3>
                             <div className="flex gap-2">
                                 <Button variant="outline" size="icon" onClick={prevMonth} className="h-8 w-8 rounded-full"><ChevronLeft size={16} /></Button>
                                 <Button variant="outline" size="icon" onClick={nextMonth} className="h-8 w-8 rounded-full"><ChevronRight size={16} /></Button>
@@ -118,8 +121,8 @@ export function Availability() {
                         </div>
 
                         <div className="grid grid-cols-7 gap-2 text-center mb-4">
-                            {daysOfWeek.map(d => (
-                                <div key={d} className="text-xs font-bold text-muted-foreground uppercase tracking-wider">{d}</div>
+                            {t.calendar.daysOfWeek.map((d, i) => (
+                                <div key={i} className="text-xs font-bold text-muted-foreground uppercase tracking-wider">{d}</div>
                             ))}
                         </div>
 

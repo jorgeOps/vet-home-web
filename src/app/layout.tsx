@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   description: "Servicios veterinarios profesionales y cuidado de mascotas en el hogar.",
 };
 
+import { LanguageProvider } from "@/context/LanguageContext";
+
+// ... (other imports)
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,12 +34,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col font-sans`}
       >
-        <Navbar />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <WhatsAppButton />
-        <Footer />
+        <LanguageProvider>
+          <Navbar />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <WhatsAppButton />
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );
