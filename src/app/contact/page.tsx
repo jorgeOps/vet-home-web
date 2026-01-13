@@ -1,20 +1,47 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Instagram, Facebook } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Phone, MapPin, Send, Instagram, Facebook, Loader2, CheckCircle2, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
-
-
+import { useState, useEffect } from "react";
+import emailjs from '@emailjs/browser';
 import { Availability } from "@/components/Availability";
 
 export default function ContactPage() {
     const [formState, setFormState] = useState({ name: "", email: "", message: "" });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [formStatus, setFormStatus] = useState<"idle" | "success" | "error">("idle");
 
-    const handleSubmit = (e: React.FormEvent) => {
+    useEffect(() => {
+        if (formStatus !== "idle") {
+            const timer = setTimeout(() => setFormStatus("idle"), 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [formStatus]);
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Simular envío
-        alert("¡Gracias! Mensaje simulado enviado. Para la versión final conectaremos esto a tu email.");
+        setIsSubmitting(true);
+
+        try {
+            await emailjs.send(
+                "service_kq9mg6m",
+                "template_l3orf38", // Correct template ID
+                {
+                    name: formState.name,
+                    email: formState.email,
+                    message: formState.message,
+                },
+                "s3w1jKbXorTeL9Fec" // Public Key
+            );
+            setFormStatus("success");
+            setFormState({ name: "", email: "", message: "" });
+        } catch (error) {
+            console.error("Error sending email:", error);
+            setFormStatus("error");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -49,8 +76,8 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h3 className="font-medium text-lg">Teléfono / WhatsApp</h3>
-                                    <p className="text-muted-foreground">+34 600 000 000</p>
-                                    <p className="text-xs text-muted-foreground mt-1">Lunes a Domingo, 9h - 20h</p>
+                                    <p className="text-muted-foreground">+34 622 588 839</p>
+                                    <p className="text-xs text-muted-foreground mt-1">Lunes a Viernes, 17h - 24h. Sábados y Domingos 24h</p>
                                 </div>
                             </div>
 
@@ -79,7 +106,9 @@ export default function ContactPage() {
                             <div className="relative z-10">
                                 <h3 className="text-xl font-bold mb-2">¿Prefieres hablar por teléfono?</h3>
                                 <p className="opacity-90 mb-4">Si no estoy en la clínica con los perritos, te atenderé sin problemas para ofrecer toda la información que requieras.</p>
-                                <Button variant="secondary" className="w-full sm:w-auto font-bold">Llamar Ahora</Button>
+                                <a href="tel:+34622588839">
+                                    <Button variant="secondary" className="w-full sm:w-auto font-bold">Llamar Ahora</Button>
+                                </a>
                             </div>
                             {/* Decorative circle */}
                             <div className="absolute -bottom-12 -right-12 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
@@ -133,9 +162,38 @@ export default function ContactPage() {
                                 />
                             </div>
 
-                            <Button type="submit" size="lg" className="w-full">
-                                Enviar Mensaje <Send className="ml-2 h-4 w-4" />
+                            <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+                                {isSubmitting ? (
+                                    <>Enviando... <Loader2 className="ml-2 h-4 w-4 animate-spin" /></>
+                                ) : (
+                                    <>Enviar Mensaje <Send className="ml-2 h-4 w-4" /></>
+                                )}
                             </Button>
+
+                            <AnimatePresence>
+                                {formStatus === "success" && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -10 }}
+                                        className="flex items-center gap-2 p-4 rounded-lg bg-primary/10 text-primary border border-primary/20 shadow-sm"
+                                    >
+                                        <CheckCircle2 className="h-5 w-5" />
+                                        <p className="text-sm font-medium">¡Mensaje enviado! Te responderé lo antes posible.</p>
+                                    </motion.div>
+                                )}
+                                {formStatus === "error" && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -10 }}
+                                        className="flex items-center gap-2 p-4 rounded-lg bg-red-50 text-red-900 border border-red-200"
+                                    >
+                                        <XCircle className="h-5 w-5 text-red-600" />
+                                        <p className="text-sm font-medium">Hubo un error. Por favor, inténtalo de nuevo.</p>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </form>
                     </motion.div>
                 </div>

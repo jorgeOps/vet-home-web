@@ -57,7 +57,7 @@ export function Availability() {
         if (selectedDates.length === 0) return "#";
         const datesStr = selectedDates.map(d => d.split("-").reverse().join("/")).join(", ");
         const message = `Hola, he visto tu web y estoy interesado/a en reservar hueco para los días: ${datesStr}.`;
-        return `https://wa.me/34600000000?text=${encodeURIComponent(message)}`;
+        return `https://wa.me/34622588839?text=${encodeURIComponent(message)}`;
     };
 
     return (
