@@ -77,7 +77,7 @@ export function Navbar() {
                                 scrolled || !isHome ? "text-muted-foreground" : "text-gray-200 hover:text-white"
                             )}
                         >
-                            <Globe size={18} />
+                            <span className="text-lg">{language === 'es' ? '🇪🇸' : '🇬🇧'}</span>
                             {language}
                         </button>
 
@@ -102,6 +102,7 @@ export function Navbar() {
                                 scrolled || !isHome ? "text-primary" : "text-white"
                             )}
                         >
+                            <span className="text-lg">{language === 'es' ? '🇪🇸' : '🇬🇧'}</span>
                             {language}
                         </button>
 
