@@ -26,37 +26,49 @@ export function About() {
                         <div className="absolute -inset-4 bg-primary/20 rounded-3xl -rotate-2 blur-sm transition-all duration-500 group-hover:rotate-0 group-hover:bg-primary/30" />
 
                         {/* Carousel Container - Adjusted for Vertical Images (Aspect 3:4 or 9:16) */}
-                        <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-gray-100">
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-gray-100 cursor-grab active:cursor-grabbing">
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={currentIndex}
-                                    initial={{ opacity: 0, scale: 1.05 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.5 }}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                                    exit={{ opacity: 0, x: -20 }}
+                                    transition={{ duration: 0.3 }}
+                                    drag="x"
+                                    dragConstraints={{ left: 0, right: 0 }}
+                                    dragElastic={0.2}
+                                    onDragEnd={(e, { offset, velocity }) => {
+                                        const swipe = Math.abs(offset.x) * velocity.x;
+
+                                        if (swipe < -10000 || offset.x < -100) {
+                                            nextImage();
+                                        } else if (swipe > 10000 || offset.x > 100) {
+                                            prevImage();
+                                        }
+                                    }}
                                     className="absolute inset-0"
                                 >
                                     <Image
                                         src={images[currentIndex]}
                                         alt={`Foto ${currentIndex + 1} del carrusel`}
                                         fill
-                                        className="object-cover"
+                                        className="object-cover pointer-events-none" // prevent image drag
                                         priority={currentIndex === 0}
                                     />
                                 </motion.div>
                             </AnimatePresence>
 
                             {/* Navigation Buttons */}
-                            <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div className="absolute inset-0 flex items-center justify-between p-4 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                                 <button
                                     onClick={prevImage}
-                                    className="p-2 rounded-full bg-black/30 text-white hover:bg-black/50 backdrop-blur-sm transition-colors"
+                                    className="p-2 rounded-full bg-black/30 text-white hover:bg-black/50 backdrop-blur-sm transition-colors pointer-events-auto"
                                 >
                                     <ChevronLeft size={24} />
                                 </button>
                                 <button
                                     onClick={nextImage}
-                                    className="p-2 rounded-full bg-black/30 text-white hover:bg-black/50 backdrop-blur-sm transition-colors"
+                                    className="p-2 rounded-full bg-black/30 text-white hover:bg-black/50 backdrop-blur-sm transition-colors pointer-events-auto"
                                 >
                                     <ChevronRight size={24} />
                                 </button>
