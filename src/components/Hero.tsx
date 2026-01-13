@@ -44,15 +44,15 @@ export function Hero() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.6 }}
-                        className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+                        className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 w-full sm:w-auto px-4 sm:px-0"
                     >
-                        <Link href="/contact">
-                            <Button size="lg" className="rounded-full text-lg h-12 px-8 bg-white text-primary hover:bg-gray-100 hover:text-primary transition-all shadow-lg hover:shadow-xl hover:scale-105">
+                        <Link href="/contact" className="w-full sm:w-auto">
+                            <Button size="lg" className="w-full sm:w-auto rounded-full text-lg h-12 px-8 bg-white text-primary hover:bg-gray-100 hover:text-primary transition-all shadow-lg hover:shadow-xl hover:scale-105">
                                 Reservar Cita
                             </Button>
                         </Link>
-                        <Link href="#services">
-                            <Button size="lg" className="rounded-full text-lg h-12 px-8 bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary transition-all backdrop-blur-sm">
+                        <Link href="#services" className="w-full sm:w-auto">
+                            <Button size="lg" className="w-full sm:w-auto rounded-full text-lg h-12 px-8 bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary transition-all backdrop-blur-sm">
                                 Ver Servicios <ArrowRight className="ml-2 h-5 w-5" />
                             </Button>
                         </Link>

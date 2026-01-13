@@ -123,7 +123,7 @@ export function Availability() {
                             ))}
                         </div>
 
-                        <div className="grid grid-cols-7 gap-2 sm:gap-3">
+                        <div className="grid grid-cols-7 gap-1 sm:gap-3">
                             {/* Padding days for start of month */}
                             {[...Array(firstDayDocs)].map((_, i) => <div key={`pad-${i}`} />)}
 
