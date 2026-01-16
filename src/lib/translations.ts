@@ -28,14 +28,14 @@ export const translations = {
         },
         about: {
             title: "Sobre Mí",
-            greeting: "¡Hola! Soy María (Nombre ficticio), veterinaria colegiada con más de 5 años de experiencia en clínica de pequeños animales.",
+            greeting: "¡Hola! Soy Ana, veterinaria colegiada con experiencia profesional en pequeños animales.",
             description: "Mi pasión es garantizar la salud y felicidad de tus mascotas. Entiendo que dejar a tu perro cuando te vas de viaje puede ser estresante, por eso ofrezco un hogar, no una jaula. En mi casa, tu perro es uno más de la familia.",
             features: [
                 "Veterinaria Colegiada",
                 "Atención 24h",
                 "Sin Jaulas",
-                "Experiencia en Urgencias",
-                "Seguro de Responsabilidad",
+                "Experiencia con pequeños animales",
+                "Experiencia con animales exóticos",
                 "Cariño Infinito"
             ]
         },
@@ -43,6 +43,7 @@ export const translations = {
             title: "Contacta Conmigo",
             subtitle: "¿Tienes dudas sobre los servicios o quieres reservar fechas? Escríbeme y te contestaré lo antes posible.",
             infoTitle: "Información de Contacto",
+            availabilityTitle: "... o consulta tus fechas directamente",
             phoneTitle: "Teléfono / WhatsApp",
             phoneHours: "Lunes a Viernes, 17h - 24h. Sábados y Domingos 24h",
             emailTitle: "Email",
@@ -74,6 +75,7 @@ export const translations = {
             checkButton: "Consultar disponibilidad",
             checkHint: "Te abrirá WhatsApp para hablar directamente conmigo.",
             consultButton: "Consultar disponibilidad",
+            whatsappMessage: "Hola, he visto tu web y estoy interesado/a en reservar hueco para los días: ",
         },
         footer: {
             brandTagline: "Cuidado de mascotas familiar y cercano. Trato directo y sin intermediarios.",
@@ -116,14 +118,14 @@ export const translations = {
         },
         about: {
             title: "About Me",
-            greeting: "Hi! I'm María (Fictional Name), a registered veterinarian with over 5 years of experience in small animal clinics.",
+            greeting: "Hi! I'm Ana, a registered veterinarian with professional experience in small animals.",
             description: "My passion is ensuring the health and happiness of your pets. I understand that leaving your dog when you travel can be stressful, which is why I offer a home, not a cage. In my house, your dog is part of the family.",
             features: [
                 "Registered Veterinarian",
                 "24h Attention",
                 "No Cages",
-                "Emergency Experience",
-                "Liability Insurance",
+                "Small Animal Experience",
+                "Exotic Animal Experience",
                 "Infinite Love"
             ]
         },
@@ -163,6 +165,7 @@ export const translations = {
             checkButton: "Check availability",
             checkHint: "This will open WhatsApp to chat directly with me.",
             consultButton: "Check availability",
+            whatsappMessage: "Hi, I've seen your website and I'm interested in booking for these dates: ",
         },
         footer: {
             brandTagline: "Familiar and close pet care. Direct treatment and without intermediaries.",

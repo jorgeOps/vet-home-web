@@ -4,7 +4,7 @@ import { ImageResponse } from 'next/og'
 export const runtime = 'edge'
 
 // Image metadata
-export const alt = 'VetHome - Cuidado Veterinario a Domicilio'
+export const alt = 'VetHome Costa del Sol - Tu mascota, como en casa'
 export const size = {
     width: 1200,
     height: 630,

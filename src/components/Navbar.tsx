@@ -51,7 +51,7 @@ export function Navbar() {
                         </div>
                         <span className={cn("font-bold text-xl tracking-tight transition-colors",
                             scrolled || !isHome ? "text-foreground" : "text-white md:text-white"
-                        )}>VetHome</span>
+                        )}>VetHome Costa del Sol</span>
                     </Link>
 
                     {/* Desktop Links */}

@@ -8,11 +8,6 @@ import Link from "next/link";
 import { availabilityData, defaultStatus, DayStatus } from "@/lib/availability-data";
 import { useLanguage } from "@/context/LanguageContext";
 
-const daysOfWeek = ["L", "M", "X", "J", "V", "S", "D"];
-const monthNames = [
-    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-];
 
 export function Availability() {
     const { t } = useLanguage();
@@ -58,8 +53,8 @@ export function Availability() {
     const generateWhatsAppLink = () => {
         if (selectedDates.length === 0) return "#";
         const datesStr = selectedDates.map(d => d.split("-").reverse().join("/")).join(", ");
-        // Simple localization for the message
-        const message = `Hola, he visto tu web y estoy interesado/a en reservar hueco para los días: ${datesStr}.`;
+        // Localized message
+        const message = `${t.availability.whatsappMessage}${datesStr}.`;
         return `https://wa.me/34622588839?text=${encodeURIComponent(message)}`;
     };
 

@@ -211,7 +211,7 @@ export default function ContactPage() {
                     viewport={{ once: true }}
                     className="text-center mb-8"
                 >
-                    <h2 className="text-3xl font-bold tracking-tight text-foreground">... {language === 'en' ? 'or check availability directly' : 'o consulta tus fechas directamente'}</h2>
+                    <h2 className="text-3xl font-bold tracking-tight text-foreground">{t.contact.availabilityTitle}</h2>
                 </motion.div>
                 <Availability />
             </div>

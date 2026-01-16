@@ -17,7 +17,7 @@ export function Footer() {
                             <div className="bg-primary p-1.5 rounded-lg text-white">
                                 <Stethoscope size={20} />
                             </div>
-                            <span className="font-bold text-lg">VetHome</span>
+                            <span className="font-bold text-lg">VetHome Costa del Sol</span>
                         </div>
                         <p className="text-muted-foreground text-sm leading-relaxed">
                             {t.footer.brandTagline}

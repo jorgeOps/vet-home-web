@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "VetHome - Veterinaria a Domicilio",
+  title: "VetHome Costa del Sol - Tu mascota, como en casa",
   description: "Servicios veterinarios profesionales y cuidado de mascotas en el hogar.",
 };
 
