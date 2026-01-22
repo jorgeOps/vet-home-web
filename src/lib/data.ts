@@ -60,14 +60,14 @@ export const servicesEs: Service[] = [
         benefits: ["Piel sana", "Detección precoz de problemas", "Olor agradable en casa"]
     },
     {
-        id: "revision-general",
-        title: "Revisión General",
-        description: "Chequeo completo de salud para prevenir problemas futuros.",
-        fullDescription: "La prevención es la clave. Una revisión a tiempo puede detectar problemas antes de que sean graves. Realizo una exploración física completa (auscultación, palpación, revisión dental, ocular y ótica) y te asesoro sobre nutrición y comportamiento.",
-        price: "35€",
-        iconName: "Search",
-        features: ["Exploración física completa", "Revisión dental", "Control de peso", "Asesoramiento nutricional", "Informe detallado"],
-        benefits: ["Tranquilidad mental", "Salud a largo plazo", "Ahorro en tratamientos futuros"]
+        id: "guarderia-horas",
+        title: "Guardería por Horas",
+        description: "Deja a tu perro en casa de una veterinaria en tus horas más ajetreadas.",
+        fullDescription: "¿Necesitas hacer recados, ir al gimnasio o trabajar unas horas y no quieres dejar a tu perro solo? Ofrezco un servicio de guardería por horas en un entorno familiar y seguro. Tu perro estará acompañado, cómodo y atendido en todo momento. Ideal para perros que sufren ansiedad por separación.",
+        price: "Desde 5€/hora",
+        iconName: "Home",
+        features: ["Estancia por horas", "Atención veterinaria", "Compañía constante", "Entorno hogareño", "Sin jaulas"],
+        benefits: ["Flexibilidad total", "Tranquilidad para ti", "Socialización segura"]
     },
     {
         id: "packs-personalizados",
@@ -128,14 +128,14 @@ export const servicesEn: Service[] = [
         benefits: ["Healthy skin", "Early detection of problems", "Pleasant smell at home"]
     },
     {
-        id: "revision-general",
-        title: "General Checkup",
-        description: "Complete health check to prevent future problems.",
-        fullDescription: "Prevention is key. A timely checkup can detect problems before they become serious. I perform a complete physical examination (auscultation, palpation, dental check, ocular and otic check) and advise you on nutrition and behavior.",
-        price: "35€",
-        iconName: "Search",
-        features: ["Complete physical exam", "Dental check", "Weight control", "Nutritional advice", "Detailed report"],
-        benefits: ["Peace of mind", "Long-term health", "Savings on future treatments"]
+        id: "guarderia-horas",
+        title: "Hourly Daycare",
+        description: "Leave your dog at a vet's home during your busiest hours.",
+        fullDescription: "Need to run errands, go to the gym, or work for a few hours and don't want to leave your dog alone? I offer an hourly daycare service in a family-friendly and safe environment. Your dog will be accompanied, comfortable, and cared for at all times. Ideal for dogs with separation anxiety.",
+        price: "From 5€/hour",
+        iconName: "Home",
+        features: ["Hourly stay", "Veterinary attention", "Constant company", "Home environment", "No cages"],
+        benefits: ["Total flexibility", "Peace of mind for you", "Safe socialization"]
     },
     {
         id: "packs-personalizados",
@@ -196,14 +196,14 @@ export const servicesFr: Service[] = [
         benefits: ["Peau saine", "Détection précoce des problèmes", "Odeur agréable à la maison"]
     },
     {
-        id: "revision-general",
-        title: "Bilan Général",
-        description: "Bilan complet de santé pour prévenir les problèmes futurs.",
-        fullDescription: "La prévention est la clé. Un bilan à temps peut détecter les problèmes avant qu'ils ne deviennent graves. Je réalise un examen physique complet (auscultation, palpation, examen dentaire, oculaire et otique) et vous conseille sur la nutrition et le comportement.",
-        price: "35€",
-        iconName: "Search",
-        features: ["Examen physique complet", "Examen dentaire", "Contrôle du poids", "Conseil nutritionnel", "Rapport détaillé"],
-        benefits: ["Tranquillité d'esprit", "Santé à long terme", "Économies sur les traitements futurs"]
+        id: "guarderia-horas",
+        title: "Garderie Horaire",
+        description: "Laissez votre chien chez une vétérinaire pendant vos heures les plus chargées.",
+        fullDescription: "Besoin de faire des courses, d'aller à la salle de sport ou de travailler quelques heures et vous ne voulez pas laisser votre chien seul ? Je propose un service de garderie à l'heure dans un environnement familial et sécurisé. Votre chien sera accompagné, confortable et soigné à tout moment. Idéal pour les chiens souffrant d'anxiété de séparation.",
+        price: "À partir de 5€/heure",
+        iconName: "Home",
+        features: ["Séjour à l'heure", "Attention vétérinaire", "Compagnie constante", "Environnement familial", "Pas de cages"],
+        benefits: ["Flexibilité totale", "Tranquillité d'esprit pour vous", "Socialisation sécurisée"]
     },
     {
         id: "packs-personalizados",
@@ -264,14 +264,14 @@ export const servicesIt: Service[] = [
         benefits: ["Pelle sana", "Rilevazione precoce di problemi", "Odore gradevole in casa"]
     },
     {
-        id: "revision-general",
-        title: "Controllo Generale",
-        description: "Controllo completo della salute per prevenire problemi futuri.",
-        fullDescription: "La prevenzione è la chiave. Un controllo tempestivo può rilevare problemi prima che diventino gravi. Effettuo un esame fisico completo (auscultazione, palpazione, controllo dentale, oculare e otico) e ti consiglio su nutrizione e comportamento.",
-        price: "35€",
-        iconName: "Search",
-        features: ["Esame fisico completo", "Controllo dentale", "Controllo del peso", "Consulenza nutrizionale", "Rapporto dettagliato"],
-        benefits: ["Tranquillità mentale", "Salute a lungo termine", "Risparmio su trattamenti futuri"]
+        id: "guarderia-horas",
+        title: "Asilo Orario",
+        description: "Lascia il tuo cane a casa di una veterinaria nelle tue ore più impegnative.",
+        fullDescription: "Hai bisogno di fare commissioni, andare in palestra o lavorare qualche ora e non vuoi lasciare il tuo cane da solo? Offro un servizio di asilo a ore in un ambiente familiare e sicuro. Il tuo cane sarà accompagnato, comodo e curato in ogni momento. Ideale per cani che soffrono di ansia da separazione.",
+        price: "Da 5€/ora",
+        iconName: "Home",
+        features: ["Soggiorno orario", "Attenzione veterinaria", "Compagnia costante", "Ambiente domestico", "Niente gabbie"],
+        benefits: ["Flessibilità totale", "Tranquillità per te", "Socializzazione sicura"]
     },
     {
         id: "packs-personalizados",
