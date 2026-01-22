@@ -9,6 +9,7 @@ export interface Service {
     iconName: "Home" | "Dog" | "Syringe" | "Scissors" | "Search" | "Bone";
     features: string[];
     benefits: string[];
+    extras?: string[];
 }
 
 export const services: Service[] = [
@@ -16,26 +17,31 @@ export const services: Service[] = [
         id: "cuidado-vacaciones",
         title: "Alojamiento Casero (Vacaciones)",
         description: "Mi servicio principal. Tu perro se queda en mi casa conmigo.",
-        fullDescription: "Olvídate de las jaulas y el estrés de las residencias caninas tradicionales. En mi servicio de cuidado vacacional, tu perro convive conmigo en mi propia casa como uno más de la familia. Disfrutará de compañía constante, paseos frecuentes, juegos y, sobre todo, mucho cariño. Te enviaré fotos y vídeos diarios para que veas lo bien que se lo pasa.",
+        fullDescription: "Olvídate de las jaulas y el estrés de las residencias caninas tradicionales. En mi servicio de cuidado vacacional, tu perro convive conmigo en mi propia casa como uno más de la familia. Disfrutará de compañía constante, paseos frecuentes, juegos y, sobre todo, mucho cariño. Te enviaré fotos y vídeos diarios para que veas lo bien que se lo pasa. Por un pequeño extra nos ocupamos nosotros de toda la comida, a no ser que necesite una alimentación especial, en cuyo caso lo tendrá que proporcionar el dueño.",
         price: "Desde 25€/noche",
         iconName: "Home",
         features: ["Alojamiento en casa", "Sin jaulas", "Atención 24/7", "Fotos y vídeos diarios", "Integración familiar"],
-        benefits: ["Menos estrés para tu mascota", "Atención personalizada", "Supervisión veterinaria constante"]
+        benefits: ["Menos estrés para tu mascota", "Atención personalizada", "Supervisión veterinaria constante"],
+        extras: [
+            "Nos encargamos de su comida",
+            "Higiene (baño, corte de uñas, vaciado de glándulas anales...)",
+            "Recogida a domicilio"
+        ]
     },
     {
         id: "paseos-diarios",
         title: "Paseos Diarios",
-        description: "Paseos largos y estimulantes para mantener a tu perro activo.",
+        description: "Paseos largos y estimulantes para mantener a tu mascota activa.",
         fullDescription: "Si tienes un día complicado o trabajas muchas horas, yo me encargo de que tu perro no pierda su momento de ejercicio y diversión. Realizo paseos de calidad, adaptados a la energía y edad de tu perro, visitando parques y zonas verdes donde pueda olfatear y socializar.",
-        price: "15€/hora",
+        price: "Desde 10€/paseo",
         iconName: "Dog",
-        features: ["1 hora de paseo", "Rutas verdes", "Juegos de olfato", "Agua fresca", "Limpieza de patas al volver"],
-        benefits: ["Mejora la conducta", "Reduce la ansiedad", "Mantiene la forma física"]
+        features: ["Paseos largos", "Rutas verdes", "Playas o parques", "Agua fresca"],
+        benefits: ["Gana tiempo cuando lo necesites", "Reduce la ansiedad", "Mantiene la forma física"]
     },
     {
         id: "servicios-veterinarios",
         title: "Cuidados Veterinarios",
-        description: "Vacunas, desparasitación y curas a domicilio.",
+        description: "Chequeos veterinarios de tu mascota.",
         fullDescription: "Evita el estrés del transporte y la sala de espera. Llevo la clínica a tu salón para procedimientos preventivos y básicos. Ideal para cachorros, animales mayores o muy miedosos. Como veterinaria colegiada, puedo administrar vacunas, realizar desparasitaciones, curas de heridas leves y chequeos de salud.",
         price: "Consultar",
         iconName: "Syringe",

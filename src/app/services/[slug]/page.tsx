@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Check, CalendarCheck } from "lucide-react";
+import { ArrowLeft, Check, CalendarCheck, Plus } from "lucide-react";
 import { services, iconMap } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 
@@ -90,6 +90,23 @@ export default async function ServicePage({ params }: ServicePageProps) {
                                 </ul>
                             </div>
                         </div>
+
+                        {service.extras && (
+                            <div className="bg-orange-50 dark:bg-orange-950/20 p-6 rounded-xl border border-orange-100 dark:border-orange-900/50 mt-6">
+                                <h3 className="font-semibold text-lg mb-4 flex items-center text-orange-800 dark:text-orange-200">
+                                    <span className="bg-orange-200 dark:bg-orange-800 p-1.5 rounded mr-3 text-orange-700 dark:text-orange-100 text-xs">🎁</span>
+                                    Servicios Extra Disponibles
+                                </h3>
+                                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    {service.extras.map((extra) => (
+                                        <li key={extra} className="flex items-center text-sm text-orange-900 dark:text-orange-100/80">
+                                            <Plus className="mr-2 h-4 w-4 text-orange-500 mt-0.5 shrink-0" />
+                                            {extra}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
                     </div>
 
                     {/* Sidebar / CTA */}

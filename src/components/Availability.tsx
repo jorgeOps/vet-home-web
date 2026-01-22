@@ -93,17 +93,7 @@ export function Availability() {
                             </ul>
                         </div>
 
-                        {selectedDates.length > 0 && (
-                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                                <Link href={generateWhatsAppLink()} target="_blank">
-                                    <Button size="lg" className="w-full sm:w-auto shadow-xl shadow-primary/20">
-                                        <Send className="mr-2 h-4 w-4" />
-                                        {t.availability.checkButton}
-                                    </Button>
-                                </Link>
-                                <p className="text-xs text-muted-foreground mt-2">{t.availability.checkHint}</p>
-                            </div>
-                        )}
+
                     </div>
 
                     <div className="bg-card shadow-xl border rounded-3xl p-6 md:p-8 select-none">
@@ -170,6 +160,18 @@ export function Availability() {
                                 );
                             })}
                         </div>
+
+                        {selectedDates.length > 0 && (
+                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 mt-8 pt-6 border-t border-border/50 flex flex-col items-center text-center">
+                                <Link href={generateWhatsAppLink()} target="_blank" className="w-full">
+                                    <Button size="lg" className="w-full shadow-xl shadow-primary/20">
+                                        <Send className="mr-2 h-4 w-4" />
+                                        {t.availability.checkButton}
+                                    </Button>
+                                </Link>
+                                <p className="text-xs text-muted-foreground mt-3">{t.availability.checkHint}</p>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
