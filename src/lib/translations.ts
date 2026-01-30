@@ -393,7 +393,7 @@ export const servicesData = {
             id: "higiene-basica",
             title: "Higiene Básica",
             description: "Baños, corte de uñas, limpieza de oídos y ojos, vaciado de glándulas, y mucho más.",
-            price: "Desde 30€",
+            price: "Consultar",
             iconName: "Scissors"
         },
         {
@@ -437,7 +437,7 @@ export const servicesData = {
             id: "higiene-basica",
             title: "Basic Hygiene",
             description: "Baths, nail trimming, and ear cleaning.",
-            price: "From 30€",
+            price: "Consult",
             iconName: "Scissors"
         },
         {
@@ -481,7 +481,7 @@ export const servicesData = {
             id: "higiene-basica",
             title: "Hygiène de Base",
             description: "Bains, coupe des ongles et nettoyage des oreilles.",
-            price: "À partir de 30€",
+            price: "Consulter",
             iconName: "Scissors"
         },
         {
@@ -525,7 +525,7 @@ export const servicesData = {
             id: "higiene-basica",
             title: "Igiene Base",
             description: "Bagni, taglio unghie e pulizia orecchie.",
-            price: "Da 30€",
+            price: "Consultare",
             iconName: "Scissors"
         },
         {

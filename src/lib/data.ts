@@ -54,7 +54,7 @@ export const servicesEs: Service[] = [
         title: "Higiene Básica",
         description: "Baños, corte de uñas y limpieza de oídos.",
         fullDescription: "Mantén a tu mascota limpia y sana sin salir de casa. Realizo baños con champús dermatológicos de alta gama, corte de uñas seguro, vaciado de glándulas y limpieza de oídos. Todo con la máxima delicadeza y paciencia.",
-        price: "Desde 30€",
+        price: "Consultar",
         iconName: "Scissors",
         features: ["Baño completo", "Secado profesional", "Corte de uñas", "Limpieza de oídos", "Vaciado de glándulas"],
         benefits: ["Piel sana", "Detección precoz de problemas", "Olor agradable en casa"]
@@ -122,7 +122,7 @@ export const servicesEn: Service[] = [
         title: "Basic Hygiene",
         description: "Baths, nail trimming, and ear cleaning.",
         fullDescription: "Keep your pet clean and healthy without leaving home. I perform baths with high-end dermatological shampoos, safe nail trimming, gland expression, and ear cleaning. All with maximum delicacy and patience.",
-        price: "From 30€",
+        price: "Consult",
         iconName: "Scissors",
         features: ["Complete bath", "Professional drying", "Nail trimming", "Ear cleaning", "Gland expression"],
         benefits: ["Healthy skin", "Early detection of problems", "Pleasant smell at home"]
@@ -190,7 +190,7 @@ export const servicesFr: Service[] = [
         title: "Hygiène de Base",
         description: "Bains, coupe des ongles et nettoyage des oreilles.",
         fullDescription: "Gardez votre animal propre et en bonne santé sans quitter la maison. Je réalise des bains avec des shampooings dermatologiques haut de gamme, une coupe des ongles sûre, la vidange des glandes et le nettoyage des oreilles. Le tout avec le maximum de délicatesse et de patience.",
-        price: "À partir de 30€",
+        price: "Consulter",
         iconName: "Scissors",
         features: ["Bain complet", "Séchage professionnel", "Coupe des ongles", "Nettoyage des oreilles", "Vidange des glandes"],
         benefits: ["Peau saine", "Détection précoce des problèmes", "Odeur agréable à la maison"]
@@ -258,7 +258,7 @@ export const servicesIt: Service[] = [
         title: "Igiene Base",
         description: "Bagni, taglio unghie e pulizia delle orecchie.",
         fullDescription: "Mantieni il tuo animale pulito e sano senza uscire di casa. Effettuo bagni con shampoo dermatologici di alta gamma, taglio unghie sicuro, spremitura ghiandole e pulizia orecchie. Tutto con la massima delicatezza e pazienza.",
-        price: "Da 30€",
+        price: "Consultare",
         iconName: "Scissors",
         features: ["Bagno completo", "Asciugatura professionale", "Taglio unghie", "Pulizia orecchie", "Spremitura ghiandole"],
         benefits: ["Pelle sana", "Rilevazione precoce di problemi", "Odore gradevole in casa"]
